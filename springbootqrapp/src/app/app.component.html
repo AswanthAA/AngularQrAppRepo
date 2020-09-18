@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card bg-dark my-5">
+        <div class="card-body">
+          <h2 class="card-title text-center text-white py-3">{{ title }}</h2>
+          <!-- <ul class="text-center list-inline py-3">
+            <li class="list-inline-item">
+              <a routerLink="/users" class="btn btn-info">List Users</a>
+                </li>
+            <li class="list-inline-item">
+              <a routerLink="/adduser" class="btn btn-info">Add User</a>
+                </li>
+          </ul> -->
+
+
+          <!-- <form (submit)="onSubmit()">
+            <input [(ngModel)]="playerName">
+         </form>
+          <form action = "getqrcode" routerLink="getqrcode" (submit)="onSubmit()">
+            <input type="textbox" name="qrname" [(ngModel)]="qrname">
+            <input type ="submit" value="submit">
+          
+          </form>-->
+
+        
+        <form #qrcodeString = "ngForm" (ngSubmit) = "onClickSubmit(qrcodeString.value)">
+          <input type="textbox" name="qrname" [(ngModel)]="qrname" placeholder="Please Enter a string">
+          <input type ="submit" value="Generate QR Code">
+        </form>
+        <div [hidden] = "isShowProgress">
+          <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+        </div>
+        
+        <!-- <input type="textbox" name="qrname" [(ngModel)]="qrname" placeholder="Please Enter a string"> -->
+
+            <!-- <button (click) = "testFunction()">button submit </button> -->
+          <div [hidden] = "isShowBoolean">
+            <h2 style = "color:#FF0000">Entered string is {{details.qrname}},</h2>
+            <img alt="img" src="data:image/jpeg;base64,{{details.base64image}}" />
+          </div>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
